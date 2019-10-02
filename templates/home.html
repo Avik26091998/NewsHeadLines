@@ -3,23 +3,25 @@ Flask gives you Jinja by default, and assumes that you store all your Jinja temp
 Once we've created templates, we'll make calls from our Flask app to render these templates. Rendering involves parsing the Jinja code, inserting any dynamic data, and creating pure HTML to be returned to a user's browser.
 -->
 
+
 <html>
 	
 	<head>
 		<title>HeadLines</title>
 	</head>
 
+	<form>
+		<input type="text" name="publication" placeholder="search">
+		<input type="submit" value="Submit">
+	</form>
+
 	<body>
 		<h1>HeadLines</h1>
 		{% for article in articles %}
-		<!--  Double braces, {{ }}, indicate to Jinja that anything inside them should not be taken as literal HTML code  
-              render_template call will substitute these for the real data, returning a pure HTML page.
-
-              {% %}, to indicate control logic
-	     -->
 		<b><a href="{{article.link}}">{{article.title}}</a></b><br>
-		<i>{{article.published}}</i><br>
-		<p>{{article.summary}}</p><br>
+		<i>{{article.published}}</i>
+		<p>{{article.summary}}</p>
+		<hr>
 		{% endfor %}
 	</body>
 
