@@ -1,0 +1,26 @@
+<!-- Jinja is a Python template engine. jinja is inherent property of flask
+Flask gives you Jinja by default, and assumes that you store all your Jinja templates in a subdirectory of your application named templates
+Once we've created templates, we'll make calls from our Flask app to render these templates. Rendering involves parsing the Jinja code, inserting any dynamic data, and creating pure HTML to be returned to a user's browser.
+-->
+
+<html>
+	
+	<head>
+		<title>HeadLines</title>
+	</head>
+
+	<body>
+		<h1>HeadLines</h1>
+		{% for article in articles %}
+		<!--  Double braces, {{ }}, indicate to Jinja that anything inside them should not be taken as literal HTML code  
+              render_template call will substitute these for the real data, returning a pure HTML page.
+
+              {% %}, to indicate control logic
+	     -->
+		<b><a href="{{article.link}}">{{article.title}}</a></b><br>
+		<i>{{article.published}}</i><br>
+		<p>{{article.summary}}</p><br>
+		{% endfor %}
+	</body>
+
+</html>
